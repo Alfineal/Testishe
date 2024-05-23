@@ -1,0 +1,30 @@
+{% extends "base/base.html"%}
+
+{% block start %}
+
+
+<section class="section-content padding-y">
+    <div class="container">
+    
+   
+            <!-- card .// -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>Количество ваших заказов: 1</h3>
+                        <dl class="dlist-align">                      
+                          <dt>Общая сумма:</dt>
+                          <dd class="text-right  h5"><strong>{{cart.get_cart_total}}2626₽</strong></dd>
+                        </dl>
+                        <div class="alert alert-success mt-3">
+                            <p class="icontext"><i class="icon text-success fa"></i> Ваш товар будет готов в течении 1-2 дней</p>
+                            <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                                <span class="sr-only">Загрузка...</span>
+                        </div>
+                </div> <!-- card-body.// -->
+            </div>  <!-- card .// -->
+        </aside> <!-- col.// -->
+    </div>
+    
+    </div> <!-- container .//  -->
+    </section>
+    {% endblock %}

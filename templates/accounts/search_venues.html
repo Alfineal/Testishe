@@ -1,0 +1,110 @@
+{% extends "base/base.html"%}
+
+{% block start %}
+
+<div class="container">
+
+
+
+    <div class="card">
+        <div class="card-body d-flex">
+            <div class="form-inline d-inline-flex mr-auto">
+                <labe>Категория  <select class="ml-2 form-control">
+                    <option>Диабет</option>
+                    <option>Зрение</option>
+                    <option>Медецинские приборы</option>
+                    <option>Похудение</option>
+                </select>
+            </labe></div>
+            <div class="btn-group" role="group" aria-label="Фильтровать по">
+              <button type="button" class="btn btn-outline-primary active">Избранное</button>
+              <button type="button" class="btn btn-outline-primary">Новинки</button>
+              <button type="button" class="btn btn-outline-primary">В продаже</button>
+            </div>
+        </div>
+        </div>
+
+
+        <div class=" mt-5 pt-5">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Товары</h5>
+                            <ul class="list-menu">
+                                <li><a href="#">Пантенол <span class="badge badge-pill badge-light float-right">120</span> </a></li>
+                                <li><a href="#">Афобазол <span class="badge badge-pill badge-light float-right">42</span> </a></li>
+                                <li><a href="#">Глицин <span class="badge badge-pill badge-light float-right">16</span> </a></li>
+                                <li><a href="#">Смекта <span class="badge badge-pill badge-light float-right">87</span> </a></li>
+                                <li><a href="#">Эвалар <span class="badge badge-pill badge-light float-right">34</span></a></li>
+                                <li><a href="#">Грация <span class="badge badge-pill badge-light float-right">7</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Оценка</h5>
+                        
+                            <label class="custom-control custom-checkbox">
+                              <input type="checkbox" checked="" class="custom-control-input">
+                              <div class="custom-control-label text-warning"> 
+                                  <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                  <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                              </div>
+                            </label>
+                    
+                            <label class="custom-control custom-checkbox">
+                              <input type="checkbox" checked="" class="custom-control-input">
+                              <div class="custom-control-label text-warning"> 
+                                  <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                  <i class="fa fa-star"></i> 
+                              </div>
+                            </label>
+                    
+                            <label class="custom-control custom-checkbox">
+                              <input type="checkbox" checked="" class="custom-control-input">
+                              <div class="custom-control-label text-warning"> 
+                                  <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                              </div>
+                            </label>
+                    
+                            <label class="custom-control custom-checkbox">
+                              <input type="checkbox" checked="" class="custom-control-input">
+                              <div class="custom-control-label text-warning"> 
+                                  <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                              
+                              </div>
+                            </label>
+                    
+                        </div>
+                    </div>
+                    </div>
+                    {% if searched %}
+                        {% for venue in venues %}
+
+                            <a href="/"><h4>{{venue}}</h4></a>
+                            <h4>:Присутствует в нашем ассортименте!</h4>
+                        {% endfor %}
+                        {% else %}
+                        <h4>Данный товар отсутствует в нашем ассортименте.</h4>
+
+                    {% endif %}
+                 <!-- card // -->
+                </div> <!-- col.// -->
+            </div>
+        </div>
+            </div>
+    
+            </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

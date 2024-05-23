@@ -1,0 +1,141 @@
+{% extends "base/base.html"%}
+
+{% block start %}
+
+
+
+
+        <section class="p-4 p-md-4" style=" height: 1400px;
+        background: radial-gradient(at top, #FEFFFF, #A7CECC);">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-5">
+          <div class="card rounded-3">
+            <div class="card-body p-4">
+              <div class="text-center mb-4">
+                <h3>Оформление заказа</h3>
+              </div>
+             
+              
+         
+                <section class="CartCheckoutView-section"><h3>Шаг <span class="required-symbol">1</span><span class="current-index"></span> из 2. Контактные данные: </h3></section>
+                <h5>Введите ваш номер телефона, чтобы мы могли сообщить вам о статусе заказа.</h5>
+                <form>
+                  <div class="form-group">
+                    <input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control"  required placeholder="(***)-***-**-**">
+                    <small id="emailHelp" class="form-text text-muted" >Также мы вышлем письмо на вашу электронную почту.</small>
+                  </div>
+                  
+                </form>
+                <section class="CartCheckoutView-section"><h3>Шаг <span class="required-symbol">2</span><span class="current-index"></span> из 2. Доставим в эту аптеку: </h3></section>
+           
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Accd22f9ba1ad1e0eba64376e094a7659920e8b313937bc736617a7bec307c462&amp;source=constructor" width="705" height="357" frameborder="0"></iframe>                   
+                 <div class="card-body">
+                      <h5 class="card-title"><img class="logo" src="https://cdn-icons-png.flaticon.com/128/1758/1758500.png" style="margin-right: 8px" width="50" height="50" alt="доставка">Доставка в 1126 аптек в Области – завтра – Бесплатно</h5>
+                      <h5 class="card-title"><img class="logo" src="https://cdn-icons-png.flaticon.com/128/5097/5097344.png" style="margin-right: 8px" width="50" height="50" alt="доставка">Оплата при получении</h5>
+       
+                        </div>  
+                <div class = "form">
+                  <h3>Шаг <span class="required-symbol">3</span><span class="current-index"></span> из 3. Выберите способ оплаты: </h3>                  <!--Вот селект, от которого зависит содержимое формы-->
+                      <select class="form-control" type="text" placeholder="Default input" style="margin-left: 0px; padding-bottom:10px padding-top:10px" id = "select_type" >
+                          <option value = "pay_cash">Оплата онлайн</option>
+                          <option value = "pay_online">Оплата при получении</option>
+                      </select>
+                      <!--Форма, появляющаяся, если в селекторе выбрана запись A-->
+                      <div id = "Pay_cash" >
+                      <form name = "pay_cash" id = "pay_cash">
+                      <br>
+                          <div id = "Pay_online">
+                            <form name = "pay_online" id = "pay_online">
+                               <p class="fw-bold mb-4">Данные карты:</p>
+                               <div class="form-outline mb-4">
+                               <input autocomplete="off" type="text" class="form-control form-control-lg" value="" />
+                               <label autocomplete="off" class="form-label">Имя владельца карты</label>
+                               </div>
+                               <div class="row mb-4">
+                               <div class="col-7">
+                                   <div class="form-outline" autocomplete="off">
+                                   <input type="text" id="formControlLgXM" class="form-control form-control-lg"
+                                       value="1234 5678 1234 5678" />
+                                   <label class="form-label" autocomplete="off"  >Номер карты</label>
+                                   </div>
+                               </div>
+                               <div class="col-3">
+                                   <div class="form-outline">
+                                   <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
+                                       placeholder="MM/YYYY" />
+                                   <label class="form-label" for="formControlLgExpk">Истекает</label>
+                                   </div>
+                               </div>
+                               <div class="col-2">
+                                   <div class="form-outline">
+                                   <input type="password" id="formControlLgcvv" class="form-control form-control-lg"
+                                       placeholder="Cvv" />
+                                   <label class="form-label" for="formControlLgcvv">CVV</label>
+                                   </div>
+                               </div>
+                               </div>
+                               <!-- Button to open the modal -->
+                              </form>
+                            </form>
+                          </div>
+                              <button type="button" class="btn btn-primary" id="myBtn" style="padding-bottom:10px">
+                                Оформить заказ
+                            </button>
+                  <!-- Modal -->
+                  <div class="modal" id="myModal">
+                    
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+           
+                              <!-- Modal header -->
+                              <div class="modal-header">
+                                <span><h4 class="modal-title">Заказ оформлен!</h4><img class="img-fluid" src="https://cdn-icons-png.flaticon.com/512/2648/2648764.png" width="70" height="70"/>
+                                </span>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+
+                              <!-- Modal body -->
+                              <div class="modal-body">
+                                
+                                Ваш заказ сформирован и вскоре будет укомплектован.<br/>
+                                  Мы оповестим вас о его готовности.
+                              </div>
+                              
+                              <!-- Modal footer -->
+                              <div class="modal-footer">
+                                  <a type="button" class="btn btn-primary" href="/">На главную</a>
+                              </div>
+           
+                          </div>
+                      </div>
+                  </div>
+           
+              </div>
+          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+          <script>
+          $(document).ready(function(){
+            $("#myBtn").click(function(){
+               $("#myModal").modal();
+         
+
+              });
+          });
+          
+          </script>
+          <script type="text/javascript">
+            document.getElementById('select_type').onchange = function() {document.querySelectorAll('.form form').forEach(function(e) {e.style.display = 'none';});
+            document.getElementById(this.value).style.display = 'block';}
+          </script>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+   
+   
+</div>
+
+
+
+{% endblock %}

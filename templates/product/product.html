@@ -1,0 +1,145 @@
+{% extends "base/base.html"%}
+
+{% block start %}
+
+
+<section class="section-content padding-y bg">
+    <div class="container">
+    
+    <!-- ============================ COMPONENT 1 ================================= -->
+    <div class="card">
+        <div class="row no-gutters">
+            <aside class="col-md-6">
+    <article class="gallery-wrap"> 
+    <div class="img-big-wrap">
+      <div> <a href="#"><img src="/media/{{product.product_images.first.image}}"></a></div>
+    </div> <!-- slider-product.// -->
+    <div class="thumbs-wrap">
+        {% for image in product.product_images.all %}
+      <a href="#" class="item-thumb"> <img src="/media/{{image.image}}"></a>
+        {% endfor %}
+    
+    </div> <!-- slider-nav.// -->
+    </article> <!-- gallery-wrap .end// -->
+            </aside>
+            <main class="col-md-6 border-left">
+    <article class="content-body">
+    
+    <h2 class="title">{{product.product_name}}</h2>
+    <div class="mb-3"> 
+        <var class="price h4"> 
+            {% if updated_price %}
+            {{updated_price}}
+            {% else %}
+            {{product.price}}
+            {% endif %}
+            ₽</var> 
+        <span class="text-muted">/за 1 шт</span> 
+    </div> <!-- price-detail-wrap .// -->
+    
+    <p>{{product.product_description}}</p>
+    
+    
+    <dl class="row">
+      <dt class="col-sm-3">Поставщик</dt>
+      <dd class="col-sm-9">FinealPHarm</dd>
+    
+      <dt class="col-sm-3">Форма</dt>
+      <dd class="col-sm-9">Капсулы</dd>
+    
+      <dt class="col-sm-3">Доставка</dt>
+      <dd class="col-sm-9">По России </dd>
+    </dl>
+    
+    <hr>
+    
+        <div class="form-row">
+            <div class="form-group col-md flex-grow-0">
+                <label>Количество</label>
+                <div class="input-group mb-3 input-spinner">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-light" type="button" id="button-plus"> + </button>
+                  </div>
+                  <input type="text" class="form-control" value="1">
+                  <div class="input-group-append">
+                    <button class="btn btn-light" type="button" id="button-minus"> - </button>
+                  </div>
+                </div>
+            </div> <!-- col.// -->
+            
+            {% if product.size_variant %}
+            <div class="form-group col-md">
+                    <label>Размер упаковки</label>
+                    <div class="mt-1">
+                      
+                    {% for size in product.size_variant.all %}
+                        <label class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" onchange="get_correct_price('{{size.size_name}}')" name="select_size" {% if selected_size == size.size_name%} checked {% endif %} class="custom-control-input">
+                          <div class="custom-control-label">{{size.size_name}}</div>
+                        </label>
+                     
+    
+                    {% endfor %}
+    
+                    </div>
+            </div> <!-- col.// -->
+            {% endif %}
+        </div> <!-- row.// -->
+        <a href="{% url 'add_to_cart' product.uid %}?variant={{selected_size}}" class="btn  btn-outline-primary"> <span class="text"> Добавить в корзину </span> <i class="fas fa-shopping-cart"></i>  </a>
+        <br>
+        <br>
+        <a href="/" class="btn  btn btn-light"> <i class="fa fa-chevron-left"></i> Вернуться к ассортименту </a>
+    </article> <!-- product-info-aside .// -->
+            </main> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- card.// -->
+    <!-- ============================ COMPONENT 1 END .// ================================= -->
+    
+
+    </div>
+    </section>
+
+    <section class="section-content padding-y bg">
+
+      {% comment %} <div class="card-body d-flex">
+        <div class="_3HvKj _1Mgl7 _3HvKj _1q504" data-tid="9459b458"><h2 data-tid="5170483e e096820d 8f5dca10" data-tid-prop="5170483e e096820d 8f5dca10" class="D7c4V ZsaCc _2pkLA">Аналоги по наиболее<br/> выгодным ценам!<!-- --> </h2></div>
+        <div class="container">
+            <div class="row">
+            <div class="col-sm">
+                <a href = 'http://127.0.0.1:8000/product/py-b/'><img class="logo" style="margin-left: 20px;" src="https://avatars.mds.yandex.net/get-mpic/7689172/img_id2278203813765060596.jpeg/orig" width="120" height="100" alt="Голова" ></a>
+                <h5>Венотон</h5>
+                <h6>Цена: 180₽</h6>
+                <h6>Поставщик: FinealPHarm</h6>
+              </div>
+              <div class="col-sm">
+                <a href = '/'><img class="logo" style="margin-left: 10px;" src="https://avatars.mds.yandex.net/get-mpic/5234762/img_id2361681145178507687.jpeg/orig" width="100" height="100" alt="Нос и горло"></a>
+                <h5>Веноприм</h5>
+                <h6>Цена: 200₽</h6>
+                <h6>Поставщик: Витмагнат</h6>
+              </div>  {% endcomment %}
+              {% comment %} <div class="col-sm">
+                <a href = '/'><img class="logo" style="margin-left: 8px;" src="https://egoisme.ru/wa-data/public/shop/products/76/93/19376/images/18085/18085.970.jpg" width="120" height="100" alt="Мышцы и суставы"></a>
+                <h5>Венотол</h5>
+                <h6>Цена: 169₽</h6>
+                <h6>Поставщик: Витамир</h6>
+
+              </div> {% endcomment %}
+              
+            </div>
+          </div>
+        </div> 
+    </div>
+    </section>
+  
+
+    <script>
+
+        function get_correct_price(size){
+            window.location.href = window.location.pathname + `?size=${size}`
+                
+        } 
+    </script>
+
+
+
+{% endblock %}
