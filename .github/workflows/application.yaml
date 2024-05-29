@@ -24,7 +24,7 @@ jobs:
     - name: Run custom script
       run: |
         echo "Running custom script"
-        python your_script.py
+        python ../your_script.py
 
     - name: Final step
       run: |
