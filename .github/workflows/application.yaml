@@ -21,11 +21,6 @@ jobs:
       with:
         python-version: '3.8'
 
-    - name: Run custom script
-      run: |
-        echo "Running custom script"
-        python ../your_script.py
-
     - name: Final step
       run: |
         echo "All steps completed"
